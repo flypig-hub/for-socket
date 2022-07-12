@@ -3,10 +3,10 @@ const mysql = require("mysql");
 const path = require("path");
 const cors = require("cors"); // cors 패키지 연결
 const morgan = require("morgan");
-const UserRouter = require("./router/userRouter");
-const PostRouter = require("./router/postRouter");
-const LikeRouter = require("./router/likeRouter");
-const CommentRouter = require("./router/commentRouter")
+// const UserRouter = require("./router/userRouter");
+// const PostRouter = require("./router/postRouter");
+// const LikeRouter = require("./router/likeRouter");
+// const CommentRouter = require("./router/commentRouter")
 const reqlogMiddleware = require("./middlewares/request-log-middleware");
 const webSocket = require("./socket");
 
@@ -45,9 +45,9 @@ app.get("/", (req, res) => {
 
 
 
-app.use("/user", UserRouter);
+// app.use("/user", UserRouter);
 
-app.use("/post", PostRouter, LikeRouter, CommentRouter);
+// app.use("/post", PostRouter, LikeRouter, CommentRouter);
 
 
 app.set("view engine", "pug", "ejs");
