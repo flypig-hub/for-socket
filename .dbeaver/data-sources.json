@@ -30,8 +30,7 @@
 				"url": "jdbc:mysql://localhost:3305/database_week7",
 				"home": "C:\\Program Files\\MySQL\\MySQL Server 8.0",
 				"type": "dev",
-				"auth-model": "native",
-				"handlers": {}
+				"auth-model": "native"
 			}
 		},
 		"mysql8-181a6474aac-187f294b8119a3f0": {
@@ -47,8 +46,7 @@
 				"url": "jdbc:mysql://localhost:3305/database_week7",
 				"home": "C:\\Program Files\\MySQL\\MySQL Server 8.0",
 				"type": "dev",
-				"auth-model": "native",
-				"handlers": {}
+				"auth-model": "native"
 			}
 		},
 		"mysql8-181a648f558-6235a6410548d8b5": {
@@ -64,6 +62,43 @@
 				"url": "jdbc:mysql://localhost:3305/database_week7",
 				"home": "C:\\Program Files\\MySQL\\MySQL Server 8.0",
 				"type": "dev",
+				"auth-model": "native"
+			}
+		},
+		"mysql8-181f11e69f2-6926c3d52903f615": {
+			"provider": "mysql",
+			"driver": "mysql8",
+			"name": "localhost",
+			"save-password": true,
+			"read-only": false,
+			"configuration": {
+				"host": "localhost",
+				"port": "3305",
+				"url": "jdbc:mysql://localhost:3305/",
+				"home": "C:\\Program Files\\MySQL\\MySQL Server 8.0",
+				"type": "dev",
+				"auth-model": "native",
+				"handlers": {}
+			}
+		},
+		"mysql8-181f11eb895-718effdaa5c18d0b": {
+			"provider": "mysql",
+			"driver": "mysql8",
+			"name": "batabase_week7",
+			"save-password": true,
+			"read-only": false,
+			"configuration": {
+				"host": "0.0.0.0",
+				"port": "3305",
+				"database": "batabase_week7",
+				"url": "jdbc:mysql://0.0.0.0:3305/batabase_week7",
+				"home": "C:\\Program Files\\MySQL\\MySQL Server 8.0",
+				"type": "dev",
+				"properties": {
+					"connectTimeout": "20000",
+					"rewriteBatchedStatements": "true",
+					"enabledTLSProtocols": "TLSv1,TLSv1.1,TLSv1.2"
+				},
 				"auth-model": "native",
 				"handlers": {}
 			}

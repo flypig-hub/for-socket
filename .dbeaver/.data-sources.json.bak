@@ -1,17 +1,84 @@
 {
 	"folders": {},
 	"connections": {
-		"dbeaver-sample-database-sqlite-1": {
-			"provider": "sqlite",
-			"driver": "sqlite_jdbc",
-			"name": "DBeaver Sample Database (SQLite)",
+		"mysql8-181a643a980-5a27e84a0943ab0c": {
+			"provider": "mysql",
+			"driver": "mysql8",
+			"name": "database_week7",
 			"save-password": true,
-			"show-system-objects": true,
 			"read-only": false,
 			"configuration": {
-				"database": "C:\\Users\\3\\AppData\\Roaming\\DBeaverData\\workspace6\\.metadata\\sample-database-sqlite-1\\Chinook.db",
-				"url": "jdbc:sqlite:C:\\Users\\3\\AppData\\Roaming\\DBeaverData\\workspace6\\.metadata\\sample-database-sqlite-1\\Chinook.db",
-				"type": "dev"
+				"host": "localhost",
+				"port": "3305",
+				"database": "database_week7",
+				"url": "jdbc:mysql://localhost:3305/database_week7",
+				"home": "C:\\Program Files\\MySQL\\MySQL Server 8.0",
+				"type": "dev",
+				"auth-model": "native"
+			}
+		},
+		"mysql8-181a6463a15-38a8602d19e427b1": {
+			"provider": "mysql",
+			"driver": "mysql8",
+			"name": "database_week7 2",
+			"save-password": true,
+			"read-only": false,
+			"configuration": {
+				"host": "localhost",
+				"port": "3305",
+				"database": "database_week7",
+				"url": "jdbc:mysql://localhost:3305/database_week7",
+				"home": "C:\\Program Files\\MySQL\\MySQL Server 8.0",
+				"type": "dev",
+				"auth-model": "native"
+			}
+		},
+		"mysql8-181a6474aac-187f294b8119a3f0": {
+			"provider": "mysql",
+			"driver": "mysql8",
+			"name": "database_week7 3",
+			"save-password": true,
+			"read-only": false,
+			"configuration": {
+				"host": "localhost",
+				"port": "3305",
+				"database": "database_week7",
+				"url": "jdbc:mysql://localhost:3305/database_week7",
+				"home": "C:\\Program Files\\MySQL\\MySQL Server 8.0",
+				"type": "dev",
+				"auth-model": "native"
+			}
+		},
+		"mysql8-181a648f558-6235a6410548d8b5": {
+			"provider": "mysql",
+			"driver": "mysql8",
+			"name": "database_week7 4",
+			"save-password": true,
+			"read-only": false,
+			"configuration": {
+				"host": "localhost",
+				"port": "3305",
+				"database": "database_week7",
+				"url": "jdbc:mysql://localhost:3305/database_week7",
+				"home": "C:\\Program Files\\MySQL\\MySQL Server 8.0",
+				"type": "dev",
+				"auth-model": "native"
+			}
+		},
+		"mysql8-181f11e69f2-6926c3d52903f615": {
+			"provider": "mysql",
+			"driver": "mysql8",
+			"name": "localhost",
+			"save-password": true,
+			"read-only": false,
+			"configuration": {
+				"host": "localhost",
+				"port": "3305",
+				"url": "jdbc:mysql://localhost:3305/",
+				"home": "C:\\Program Files\\MySQL\\MySQL Server 8.0",
+				"type": "dev",
+				"auth-model": "native",
+				"handlers": {}
 			}
 		}
 	},
