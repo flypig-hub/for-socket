@@ -16,6 +16,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@socket.io/admin-ui": "^0.4.0",
     "aws-sdk": "^2.1163.0",
     "axios": "^0.27.2",
     "bcrypt": "^5.0.1",

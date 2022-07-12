@@ -1,27 +1,33 @@
 /*Socket.io라이브러리에 대한 설정 파일입니다.*/
 
-const http = require("http");
-const Server = require("socket.io");
+// const http = require("http");
+
 const express = require("express");
 const axios = require("axios");
-const express = require("express");
+// const express = require("express");
 const app = express();
 const instrument = require("@socket.io/admin-ui");
 const Chat = require("./models/chat");
 const Room = require("./models/room");
-
-module.exports = (httpServer, app, sessionMiddleware) => {
-  const httpServer = http.createServer(app);
-  const wsServer = new Server(
-    httpServer,
-    { path: "/socket.io" },
-    {
-      cors: {
-        origin: ["https://admin.socket.io"],
-        credentials: true,
-      },
-    }
-  );
+// const httpServer = http.createServer(app);
+module.exports = (httpServer, app) => {
+	const { Server} = require("socket.io");
+	const wsServer = new Server(httpServer, {
+    cors: {
+      origin: ["https://admin.socket.io"],
+      credentials: true,
+    },
+  });
+//   const wsServer = new Server(
+//     httpServer,
+//     { path: "/socket.io" },
+//     {
+//       cors: {
+//         origin: ["https://admin.socket.io"],
+//         credentials: true,
+//       },
+//     }
+//   );
   // 라우터에서 io객체를 쓸 수 있게 저장하는 코드.
   // req.app.get('io')로 접근 가능
   app.set("wsServer", wsServer);
@@ -74,32 +80,31 @@ module.exports = (httpServer, app, sessionMiddleware) => {
     const roomId = referer.split("/")[4].replace(/\?.+/, "");
     console.log(`chat 네임스페이스 ${roomId}에 접속`);
 
-	  socket.on("enter_room", (roomName) => {
-		  socket.join(roomName);
-		  //roomName이름을 가진 방을 만들거나 들어감.
-      
-		  socket.to(roomName).emit("welcome", socket.nickname, countUser(roomName));
-		  //   wsServer.sockets.emit("room_change", publicRooms());
-		  const Room = await Room.findOne({ where : { title: roomName },});
-		  if (!Room) {
-			  const newRoom = new Room({
-				  where: {
-					title: roomName,
-					roomId: roomId,
-					//  hostNickname: res.local.user,
-					hostImg: res.local.user,
-					max: max,
-					createAt: Date.now,
-					hashTag: hashtag,
-					roomUserNum: countUser,
-				//roomUserId: wsServer.sockets.adapter.rooms.roomName.get(sids),
-				//roomUserNickName: 
-				  },
+	  socket.on("enter_room", async (roomName) => {
+      socket.join(roomName);
+      //roomName이름을 가진 방을 만들거나 들어감.
 
-			  });
-			//   creawsServer.sockets.adapter.rooms.get(roomName) ? sids
-		}
-	});
+      socket.to(roomName).emit("welcome", socket.nickname, countUser(roomName));
+      //   wsServer.sockets.emit("room_change", publicRooms());
+      const Room = await Room.findOne({ where: { title: roomName } });
+      if (!Room) {
+        const newRoom = new Room({
+          where: {
+            title: roomName,
+            roomId: roomId,
+            //  hostNickname: res.local.user,
+            hostImg: res.local.user,
+            max: max,
+            createAt: Date.now,
+            hashTag: hashtag,
+            roomUserNum: countUser,
+            //roomUserId: wsServer.sockets.adapter.rooms.roomName.get(sids),
+            //roomUserNickName:
+          },
+        });
+        //   creawsServer.sockets.adapter.rooms.get(roomName) ? sids
+      }
+    });
 	  
 	  socket.on("chat_message", (message, room) => {
 	const chat = new Chat({
