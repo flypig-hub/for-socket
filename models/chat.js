@@ -13,16 +13,25 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
     }
   }
-  chat.init({
-    roomId: DataTypes.STRING,
-    userId: DataTypes.STRING,
-    userNickname: DataTypes.STRING,
-    createAt: DataTypes.TIME,
-    chat: DataTypes.STRING,
-    userImg: DataTypes.STRING
-  }, {
-    sequelize,
-    modelName: 'chat',
-  });
+  chat.init(
+    {
+      chatid: {
+        type: DataTypes.INTEGER,
+        autoIncrement: true,
+        primaryKey: true,
+      },
+      roomId: DataTypes.STRING,
+      userId: DataTypes.STRING,
+      userNickname: DataTypes.STRING,
+      createAt: DataTypes.TIME,
+      chat: DataTypes.STRING,
+      userImg: DataTypes.STRING,
+    },
+    {
+      timestamp: true,
+      sequelize,
+      modelName: "chat",
+    }
+  );
   return chat;
 };

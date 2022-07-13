@@ -13,20 +13,28 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
     }
   }
-  room.init({
-    title: DataTypes.STRING,
-    roomId: DataTypes.STRING,
-    hostNickname: DataTypes.STRING,
-    hostImg: DataTypes.STRING,
-    max: DataTypes.NUMBER,
-    createAt: DataTypes.TIME,
-    hashTag: DataTypes.STRING,
-    roomUserNum: DataTypes.NUMBER,
-    roomUserId: DataTypes.STRING,
-    roomUserNickName: DataTypes.STRING
-  }, {
-    sequelize,
-    modelName: 'room',
-  });
+  room.init(
+    {
+      roomid: {
+        type: DataTypes.INTEGER,
+        autoIncrement: true,
+        primaryKey: true,
+      },
+      title: DataTypes.STRING,
+      hostNickname: DataTypes.STRING,
+      hostImg: DataTypes.STRING,
+      max: DataTypes.INTEGER,
+      createAt: DataTypes.TIME,
+      hashTag: DataTypes.STRING,
+      roomUserNum: DataTypes.INTEGER,
+      roomUserId: DataTypes.STRING,
+      roomUserNickName: DataTypes.STRING,
+    },
+    {
+      timestamp: true,
+      sequelize,
+      modelName: "room",
+    }
+  );
   return room;
 };
