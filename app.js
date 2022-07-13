@@ -13,7 +13,7 @@ const webSocket = require("./socket_notforuse");
 const app = express();
 const httpServer = http.createServer(app);
 const studyRouter = require("./router/studyRoom");
-
+const { sequelize } = require("./models");
 //socket.io
 // coconst SocketIO = require("socket.io");
 // nst io = SocketIO(server, { path: "/socket.io" });
@@ -26,7 +26,14 @@ const corsOption = {
   origin: ["*"],
   credentials: true,
 };
-
+sequelize
+  .sync({ force: false })
+  .then(() => {
+    console.log("데이터베이스 연결 성공");
+  })
+  .catch((err) => {
+    console.error(err);
+  });
 
 
 //body parser
