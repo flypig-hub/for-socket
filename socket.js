@@ -1,20 +1,20 @@
 /*Socket.io라이브러리에 대한 설정 파일입니다.*/
 
 // const http = require("http");
-
-const express = require("express");
+// const express = require("express");
 const axios = require("axios");
 // const express = require("express");
-const app = express();
+// const app = express();
 const instrument = require("@socket.io/admin-ui");
 const Chat = require("./models/chat");
 const Room = require("./models/room");
 // const httpServer = http.createServer(app);
 module.exports = (httpServer, app) => {
+  app.use(cors)
 	const { Server} = require("socket.io");
 	const wsServer = new Server(httpServer, {
     cors: {
-      origin: ["https://admin.socket.io"],
+      origin: ["https://admin.socket.io","*"],
       credentials: true,
     },
   });
