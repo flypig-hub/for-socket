@@ -12,6 +12,7 @@ const reqlogMiddleware = require("./middlewares/request-log-middleware");
 const webSocket = require("./socket_notforuse");
 const app = express();
 const httpServer = http.createServer(app);
+const studyRouter = require("./router/studyRoom");
 
 //socket.io
 // coconst SocketIO = require("socket.io");
@@ -33,6 +34,14 @@ app.use(morgan("dev"));
 app.use(express.static(path.join(__dirname, "public")));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+// sequelize
+//   .sync({ force: false })
+//   .then(() => {
+//     console.log("데이터베이스 연결 성공");
+//   })
+//   .catch((err) => {
+//     console.error(err);
+//   });
 
 //미들웨어 실행
 app.use(reqlogMiddleware);
@@ -56,5 +65,8 @@ app.set("view engine", "pug", "ejs");
 app.listen(port, () => {
   console.log(port, "포트로 서버가 켜졌어요!");
 });
+
+
+app.use("/api", studyRouter);
 // webSocket(httpServer, app);
 module.exports = app;
