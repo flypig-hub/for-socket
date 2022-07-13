@@ -9,9 +9,7 @@ const morgan = require("morgan");
 // const LikeRouter = require("./router/likeRouter");
 // const CommentRouter = require("./router/commentRouter")
 const reqlogMiddleware = require("./middlewares/request-log-middleware");
-const webSocket = require("./socket_notforuse");
 const app = express();
-const httpServer = http.createServer(app);
 const studyRouter = require("./router/studyRoom");
 const { sequelize } = require("./models");
 //socket.io
@@ -69,9 +67,9 @@ app.set("view engine", "pug", "ejs");
 // app.get("/", (_, res) => res.render("home"));
 // app.get("/*", (_, res) => res.redirect("/"));
 
-app.listen(port, () => {
-  console.log(port, "포트로 서버가 켜졌어요!");
-});
+// app.listen(port, () => {
+//   console.log(port, "포트로 서버가 켜졌어요!");
+// });
 
 
 app.use("/api", studyRouter);
