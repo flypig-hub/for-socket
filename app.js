@@ -9,7 +9,7 @@ const morgan = require("morgan");
 // const LikeRouter = require("./router/likeRouter");
 // const CommentRouter = require("./router/commentRouter")
 const reqlogMiddleware = require("./middlewares/request-log-middleware");
-const webSocket = require("./socket");
+const webSocket = require("./socket_notforuse");
 const app = express();
 const httpServer = http.createServer(app);
 
@@ -22,7 +22,7 @@ const httpServer = http.createServer(app);
 const port = 8080;
 
 const corsOption = {
-  origin: ["http://localhost:3000", "*"],
+  origin: ["*"],
   credentials: true,
 };
 
@@ -56,4 +56,5 @@ app.set("view engine", "pug", "ejs");
 app.listen(port, () => {
   console.log(port, "포트로 서버가 켜졌어요!");
 });
-webSocket(httpServer, app);
+// webSocket(httpServer, app);
+module.exports = app;
