@@ -8,6 +8,7 @@ const axios = require("axios");
 const instrument = require("@socket.io/admin-ui");
 const Chat = require("./models/chat");
 const Room = require("./models/room");
+const cors = require("cors");
 // const httpServer = http.createServer(app);
 module.exports = (httpServer, app) => {
   app.use(cors)
