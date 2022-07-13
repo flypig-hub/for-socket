@@ -19,7 +19,7 @@ const httpServer = http.createServer(app);
 // socket.io
 //require("dotenv").config(); // env 패키지 연결
 
-const port = 8080;
+const port = 3000;
 
 const corsOption = {
   origin: ["*"],
