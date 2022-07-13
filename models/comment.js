@@ -1,35 +1,41 @@
-'use strict';
-const {
-  Model
-} = require('sequelize');
-module.exports = (sequelize, DataTypes) => {
-  class Comment extends Model {
-    /**
-     * Helper method for defining associations.
-     * This method is not a part of Sequelize lifecycle.
-     * The `models/index` file will call this method automatically.
-     */
-    static associate(models) {
-      // define association here
-    }
-  }
-  Comment.init(
-    {
-      commentId: {
-        type: DataTypes.INTEGER,
-        autoIncrement: true,
-        primaryKey: true,
+const Sequelize = require("sequelize");
+
+module.exports = class Comment extends Sequelize.Model {
+  static init(sequelize) {
+    return super.init(
+      {
+        commentId: {
+          primaryKey: true,
+          unique: true,
+          allowNull: false,
+          autoIncrement: true,
+          type: Sequelize.INTEGER,
+        },
+        comment: {
+          type: Sequelize.STRING,
+          allowNull: false,
+        },
       },
-      userId: DataTypes.STRING,
-      nickname: DataTypes.STRING,
-      comment: DataTypes.STRING,
-      postId: DataTypes.STRING,
-    },
-    {
-      timestamp: true,
-      sequelize,
-      modelName: "Comment",
-    }
-  );
-  return Comment;
+      {
+        sequelize,
+        timestamps: true,
+        underscored: false,
+        modelName: "Comment",
+        tableName: "Comments",
+        paranoid: false,
+        charset: "utf8mb4",
+        collate: "utf8mb4_general_ci",
+      }
+    );
+  }
+  static associate(db) {
+    db.Comment.belongsTo(db.User, {
+      foreignKey: "userId",
+      sourceKey: "userId",
+    });
+    db.Comment.belongsTo(db.Post, {
+      foreignKey: "postId",
+      sourceKey: "postId",
+    });
+  }
 };

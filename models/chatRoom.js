@@ -1,26 +1,18 @@
 const Sequelize = require("sequelize");
 
-module.exports = class Post extends Sequelize.Model {
+module.exports = class Comment extends Sequelize.Model {
   static init(sequelize) {
     return super.init(
       {
-        postId: {
+        chatId: {
           primaryKey: true,
           unique: true,
           allowNull: false,
           autoIncrement: true,
           type: Sequelize.INTEGER,
         },
-        postContent: {
+        chat: {
           type: Sequelize.STRING,
-          allowNull: false,
-        },
-        postImg: {
-          type: Sequelize.STRING,
-          allowNull: true,
-        },
-        studyTime: {
-          type: Sequelize.INTEGER,
           allowNull: false,
         },
       },
@@ -28,8 +20,8 @@ module.exports = class Post extends Sequelize.Model {
         sequelize,
         timestamps: true,
         underscored: false,
-        modelName: "Post",
-        tableName: "Posts",
+        modelName: "chatRoom",
+        tableName: "chatRooms",
         paranoid: false,
         charset: "utf8mb4",
         collate: "utf8mb4_general_ci",
@@ -37,14 +29,13 @@ module.exports = class Post extends Sequelize.Model {
     );
   }
   static associate(db) {
-    db.Post.belongsTo(db.User, {
+    db.Comment.belongsTo(db.User, {
       foreignKey: "userId",
-      targetKey: "userId",
+      sourceKey: "userId",
     });
-    db.Post.hasMany(db.Comment, {
+    db.Comment.belongsTo(db.Post, {
       foreignKey: "postId",
       sourceKey: "postId",
-      onDelete: "CASCADE",
     });
   }
 };
